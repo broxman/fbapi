@@ -1,0 +1,29 @@
+{
+    "name": "broxman/fbapi",
+    "description": "PHP Library for Fusebill API (https://developer.fusebill.com/v1.0/reference)",
+    "license": "MIT",
+    "keywords": ["fusebill", "fusebill api", "php fusebill api"],	
+	"homepage": "https://github.com/broxman/fbapi",
+    "type": "library",
+    "version": "1.0.0", 	
+    "authors": [
+        {
+            "name": "Eduard Abdrakhmanov",
+            "email": "broxman@yandex.ru"
+        }
+    ],
+    "require": {
+        "php": ">=7",
+		"nategood/httpful": "0.2.*",		
+		"broxman/iterator": "*"		
+    },	
+    "support": {
+        "issues": "https://github.com/broxman/fbapi/issues"
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Broxman\\Fbapi\\": "src/"
+        }
+    }	
+} 
