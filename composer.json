@@ -5,7 +5,7 @@
     "keywords": ["fusebill", "fusebill api", "php fusebill api"],	
 	"homepage": "https://github.com/broxman/fbapi",
     "type": "library",
-    "version": "1.0.0", 	
+    "stability":"stable",
     "authors": [
         {
             "name": "Eduard Abdrakhmanov",
