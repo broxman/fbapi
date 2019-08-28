@@ -8,7 +8,6 @@ namespace Broxman\Fbapi;
 class Fbapi {
 	protected $api_endpoint;
     protected $api_key;
-    protected $pageSize = 10;
 
     /**
      * Fbapi constructor.
@@ -39,7 +38,7 @@ class Fbapi {
                     $url .= $arguments[0];
                 }
             }
-            return $this->execute(new Request($type, $url, $this->api_key, $arguments[1], $arguments[2], $arguments[3], $this->pageSize));
+            return $this->execute(new Request($type, $url, $this->api_key, $arguments[1], $arguments[2], $arguments[3]));
         }
         throw new \Exception("Method not found.");
     }

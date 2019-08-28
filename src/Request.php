@@ -12,7 +12,7 @@ class Request implements \Broxman\Iterator\Pager
     protected $query;
     protected $postdata;
     protected $mime;
-    protected $pageSize;
+    protected $pageSize = 10;
 
     /**
      * Request constructor.
@@ -24,14 +24,16 @@ class Request implements \Broxman\Iterator\Pager
      * @param null $mime
      * @param int $pageSize
      */
-    public function  __construct($type, $url, $apikey, $query = null, $postdata = null, $mime = null, $pageSize = 10)
+    public function  __construct($type, $url, $apikey, $query = null, $postdata = null, $mime = null)
     {
         $this->type = $type;
         $this->url = $url;
         $this->query = $query;
         $this->postdata = $postdata;
         $this->mime = $mime;
-        $this->pageSize = $pageSize;
+        if (isset($query['pageSize'])){
+            $this->pageSize = $query['pageSize'];
+        }
         $this->apikey = $apikey;
     }
 
@@ -44,7 +46,7 @@ class Request implements \Broxman\Iterator\Pager
             $this->query['pageSize'] = $this->pageSize;
         }
         if (!isset($this->query['pageNumber']) && $this->type == 'GET'){
-            $this->query['pageNumber'] = 1;
+            $this->query['pageNumber'] = 0;
         }
         if (isset($this->query)){
             $url .= '?' . http_build_query($this->query);
