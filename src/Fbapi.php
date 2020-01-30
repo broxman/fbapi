@@ -54,7 +54,7 @@ class Fbapi {
     protected function execute($Request)
     {
         $Response = $Request->getResponce();
-        if ($Response->code == 200) {
+        if ($Response->code >= 200 && $Response->code < 300) {
             if(isset($Response->headers['x-count'])) { //Return iterator;
                 return new \Broxman\Iterator\PageIterator($Response->body, $Request);
             }
