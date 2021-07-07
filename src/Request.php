@@ -12,6 +12,7 @@ class Request implements \Broxman\Iterator\Pager
     protected $query;
     protected $postdata;
     protected $mime;
+    protected $timeout;
     protected $pageSize = 10;
 
     /**
@@ -24,7 +25,7 @@ class Request implements \Broxman\Iterator\Pager
      * @param null $mime
      * @param int $pageSize
      */
-    public function  __construct($type, $url, $apikey, $query = null, $postdata = null, $mime = null)
+    public function  __construct($type, $url, $apikey, $query = null, $postdata = null, $mime = null, $timeout = 10)
     {
         $this->type = $type;
         $this->url = $url;
@@ -35,6 +36,7 @@ class Request implements \Broxman\Iterator\Pager
             $this->pageSize = $query['pageSize'];
         }
         $this->apikey = $apikey;
+        $this->timeout = $timeout;
     }
 
     /**
@@ -63,6 +65,7 @@ class Request implements \Broxman\Iterator\Pager
         else {
             $Request->mime($this->mime);
         }
+        $Request->timeout($this->timeout);
         return $Request->authenticateWith(0, $this->apikey)->send();
     }
 
